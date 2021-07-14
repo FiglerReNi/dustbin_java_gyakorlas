@@ -27,10 +27,10 @@ public class Dustbin {
 
     public void throwOutGarbage(Garbage garbage) throws DustbinContentException {
         if (garbage instanceof PaperGarbage && !((PaperGarbage) garbage).isSqueezed()) {
-            throw new DustbinContentException(garbage.getClass() + " " + garbage.getName() + " doesn't throwable");
+            throw new DustbinContentException(garbage.getClass() + " " + garbage.getName() + " isn't throwable");
         }
         if(garbage instanceof PlasticGarbage && !((PlasticGarbage) garbage).isCleand()){
-            throw new DustbinContentException(garbage.getClass() + " " + garbage.getName() + " doesn't throwable");
+            throw new DustbinContentException(garbage.getClass() + " " + garbage.getName() + " isn't throwable");
         }
 
         if (garbage instanceof PaperGarbage && ((PaperGarbage) garbage).isSqueezed()) {
