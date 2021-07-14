@@ -15,18 +15,22 @@ public class App {
         try {
             dustbin.throwOutGarbage(paperGarbage1);
         } catch (DustbinContentException e) {
+            System.out.println(e.getMessage());
             e.printStackTrace();
         }
         try {
             dustbin.throwOutGarbage(plasticGarbage1);
         } catch (DustbinContentException e) {
+            System.out.println(e.getMessage());
             e.printStackTrace();
+
         }
         dustbin.displayContents();
         Garbage plasticGarbage2 = new PlasticGarbage("plastic2", false);
         try {
             dustbin.throwOutGarbage(plasticGarbage2);
         } catch (DustbinContentException e) {
+            System.out.println(e.getMessage());
             e.printStackTrace();
         }
         dustbin.displayContents();
@@ -34,6 +38,7 @@ public class App {
         try {
             dustbin.throwOutGarbage(plasticGarbage2);
         } catch (DustbinContentException e) {
+            System.out.println(e.getMessage());
             e.printStackTrace();
         }
         dustbin.displayContents();
