@@ -44,7 +44,7 @@ public class Dustbin {
     }
 
 
-    public void emptyContents(){
+    public void emptyContents() {
         this.paperCount = 0;
         this.plasticCount = 0;
         this.houseWasteCount = 0;
@@ -53,24 +53,24 @@ public class Dustbin {
         dustbinPlastic.clear();
     }
 
-    public void displayContents(){
+    public void displayContents() {
         System.out.println(this.toString());
     }
 
     @Override
     public String toString() {
         String text = getColor() + " Dustbin! House waste content: " + houseWasteCount + "item()s ";
-        text = garabeNames( dustbinHouseWaste, text);
+        text = garabeNames(dustbinHouseWaste, text);
         text += " Paper content: " + paperCount + "item()s ";
-        text = garabeNames( dustbinPaper, text);
+        text = garabeNames(dustbinPaper, text);
         text += " Plastic content: " + plasticCount + "item()s ";
-        text = garabeNames( dustbinPlastic, text);
+        text = garabeNames(dustbinPlastic, text);
         return text;
     }
 
-    private String garabeNames(List<Garbage> dustbinType, String text){
-        for(int i=0; i< dustbinType.size(); i++){
-            text += (dustbinType.get(i).getName() + " nr." + (i+1) + " ");
+    private String garabeNames(List<Garbage> dustbinType, String text) {
+        for (int i = 0; i < dustbinType.size(); i++) {
+            text += (dustbinType.get(i).getName() + " nr." + (i + 1) + " ");
         }
         return text;
     }

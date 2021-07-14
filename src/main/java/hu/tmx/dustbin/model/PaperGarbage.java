@@ -1,6 +1,6 @@
 package hu.tmx.dustbin.model;
 
-public class PaperGarbage extends Garbage{
+public class PaperGarbage extends Garbage {
 
     private boolean squeezed;
 
@@ -15,7 +15,7 @@ public class PaperGarbage extends Garbage{
 
     @Override
     public void squeeze() {
-        if(!this.squeezed){
+        if (!this.squeezed) {
             this.squeezed = true;
         }
     }

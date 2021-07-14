@@ -1,6 +1,6 @@
 package hu.tmx.dustbin.model;
 
-public class PlasticGarbage extends Garbage{
+public class PlasticGarbage extends Garbage {
 
 
     private boolean cleand;
@@ -16,7 +16,7 @@ public class PlasticGarbage extends Garbage{
 
     @Override
     public void clean() {
-        if(!this.cleand){
+        if (!this.cleand) {
             this.cleand = true;
         }
     }
