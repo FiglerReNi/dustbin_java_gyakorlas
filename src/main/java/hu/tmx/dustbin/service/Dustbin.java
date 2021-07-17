@@ -9,7 +9,7 @@ import java.util.List;
 
 public class Dustbin {
 
-    private String color;
+    private final String color;
     private int houseWasteCount;
     private int paperCount;
     private int plasticCount;
@@ -56,7 +56,7 @@ public class Dustbin {
     }
 
     public void displayContents() {
-        System.out.println(this.toString());
+        System.out.println(this);
     }
 
     @Override
