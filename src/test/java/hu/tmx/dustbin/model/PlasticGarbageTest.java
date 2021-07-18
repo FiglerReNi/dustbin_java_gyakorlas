@@ -17,6 +17,11 @@ public class PlasticGarbageTest {
     }
 
     @Test
+    public void getName(){
+        assertEquals("plastic1", plasticGarbage1.getName());
+    }
+
+    @Test
     public void isCleaned(){
         assertFalse(plasticGarbage1.isCleand());
     }

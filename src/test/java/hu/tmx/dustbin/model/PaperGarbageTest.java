@@ -18,6 +18,11 @@ public class PaperGarbageTest {
     }
 
     @Test
+    public void getName(){
+        assertEquals("paper1", paperGarbage1.getName());
+    }
+
+    @Test
     public void isSqueezed(){
         assertFalse(paperGarbage1.isSqueezed());
     }
