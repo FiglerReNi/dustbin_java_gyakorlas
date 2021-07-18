@@ -25,6 +25,30 @@ public class Dustbin {
         return color;
     }
 
+    public int getHouseWasteCount() {
+        return houseWasteCount;
+    }
+
+    public int getPaperCount() {
+        return paperCount;
+    }
+
+    public int getPlasticCount() {
+        return plasticCount;
+    }
+
+    public List<Garbage> getDustbinPaper() {
+        return dustbinPaper;
+    }
+
+    public List<Garbage> getDustbinPlastic() {
+        return dustbinPlastic;
+    }
+
+    public List<Garbage> getDustbinHouseWaste() {
+        return dustbinHouseWaste;
+    }
+
     public void throwOutGarbage(Garbage garbage) throws DustbinContentException {
         if (garbage instanceof PaperGarbage && !((PaperGarbage) garbage).isSqueezed()) {
             throw new DustbinContentException(garbage.getClass() + " " + garbage.getName() + " isn't throwable");
@@ -45,7 +69,6 @@ public class Dustbin {
         }
     }
 
-
     public void emptyContents() {
         this.paperCount = 0;
         this.plasticCount = 0;
@@ -62,15 +85,15 @@ public class Dustbin {
     @Override
     public String toString() {
         String text = getColor() + " Dustbin! House waste content: " + houseWasteCount + "item()s ";
-        text = garabeNames(dustbinHouseWaste, text);
+        text = garbageNames(dustbinHouseWaste, text);
         text += " Paper content: " + paperCount + "item()s ";
-        text = garabeNames(dustbinPaper, text);
+        text = garbageNames(dustbinPaper, text);
         text += " Plastic content: " + plasticCount + "item()s ";
-        text = garabeNames(dustbinPlastic, text);
+        text = garbageNames(dustbinPlastic, text);
         return text;
     }
 
-    private String garabeNames(List<Garbage> dustbinType, String text) {
+    private String garbageNames(List<Garbage> dustbinType, String text) {
         for (int i = 0; i < dustbinType.size(); i++) {
             text += (dustbinType.get(i).getName() + " nr." + (i + 1) + " ");
         }
