@@ -1,6 +1,5 @@
 package hu.tmx.dustbin.service;
 
-import hu.tmx.dustbin.model.Garbage;
 import hu.tmx.dustbin.model.PaperGarbage;
 import hu.tmx.dustbin.model.PlasticGarbage;
 import org.junit.After;
@@ -9,7 +8,7 @@ import org.junit.Test;
 import org.mockito.Mockito;
 
 import static org.junit.Assert.*;
-import static org.mockito.Mockito.when;
+import static org.mockito.Mockito.*;
 
 public class DustbinTest {
 
@@ -32,6 +31,8 @@ public class DustbinTest {
             assertEquals(1, dustbin.getDustbinPaper().size());
             assertEquals(1, dustbin.getPlasticCount());
             assertEquals(1, dustbin.getDustbinPlastic().size());
+            verify(paperGarbage, times(2)).isSqueezed();
+            verify(plasticGarbage, times(2)).isCleand();
     }
 
     @Test(expected = DustbinContentException.class)
@@ -40,6 +41,8 @@ public class DustbinTest {
         when(plasticGarbage.isCleand()).thenReturn(false);
         dustbin.throwOutGarbage(paperGarbage);
         dustbin.throwOutGarbage(plasticGarbage);
+        verify(paperGarbage, times(2)).isSqueezed();
+        verify(plasticGarbage, times(2)).isCleand();
     }
 
     @Test
