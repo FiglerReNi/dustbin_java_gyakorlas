@@ -23,11 +23,6 @@ public class DustbinTest {
     }
 
     @Test
-    public void getColor(){
-        assertEquals("Yellow", dustbin.getColor());
-    }
-
-    @Test
     public void throwOutGarbage() throws DustbinContentException {
             when(paperGarbage.isSqueezed()).thenReturn(true);
             when(plasticGarbage.isCleand()).thenReturn(true);
