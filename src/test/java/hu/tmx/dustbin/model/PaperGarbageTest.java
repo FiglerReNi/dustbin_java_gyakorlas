@@ -8,28 +8,21 @@ import static org.junit.Assert.*;
 
 public class PaperGarbageTest {
 
-    PaperGarbage paperGarbage1;
-    PaperGarbage paperGarbage2;
+    PaperGarbage paperGarbage;
 
     @Before
     public void init(){
-        paperGarbage1 = new PaperGarbage("paper1", false);
-        paperGarbage2 = new PaperGarbage("paper2", true);
+        paperGarbage = new PaperGarbage("paper", false);
     }
 
     @Test
-    public void squeeze(){
-        paperGarbage1.squeeze();
-        assertTrue(paperGarbage1.isSqueezed());
-        paperGarbage1.squeeze();
-        assertTrue(paperGarbage1.isSqueezed());
-        paperGarbage2.squeeze();
-        assertTrue(paperGarbage2.isSqueezed());
+    public void paperIsSqueezeTrue(){
+        paperGarbage.squeeze();
+        assertTrue(paperGarbage.isSqueezed());
     }
 
     @After
     public void clear(){
-        paperGarbage1 = null;
-        paperGarbage2 = null;
+        paperGarbage = null;
     }
 }

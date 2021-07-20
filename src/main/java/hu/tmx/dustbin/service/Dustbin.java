@@ -10,9 +10,6 @@ import java.util.List;
 public class Dustbin {
 
     private final String color;
-    private int houseWasteCount;
-    private int paperCount;
-    private int plasticCount;
     private List<Garbage> dustbinPaper = new ArrayList<>();
     private List<Garbage> dustbinPlastic = new ArrayList<>();
     private List<Garbage> dustbinHouseWaste = new ArrayList<>();
@@ -23,18 +20,6 @@ public class Dustbin {
 
     public String getColor() {
         return color;
-    }
-
-    public int getHouseWasteCount() {
-        return houseWasteCount;
-    }
-
-    public int getPaperCount() {
-        return paperCount;
-    }
-
-    public int getPlasticCount() {
-        return plasticCount;
     }
 
     public List<Garbage> getDustbinPaper() {
@@ -58,21 +43,15 @@ public class Dustbin {
         }
 
         if (garbage instanceof PaperGarbage && ((PaperGarbage) garbage).isSqueezed()) {
-            this.paperCount++;
             dustbinPaper.add(garbage);
         } else if (garbage instanceof PlasticGarbage && ((PlasticGarbage) garbage).isCleand()) {
-            this.plasticCount++;
             dustbinPlastic.add(garbage);
         } else {
-            this.houseWasteCount++;
             dustbinHouseWaste.add(garbage);
         }
     }
 
     public void emptyContents() {
-        this.paperCount = 0;
-        this.plasticCount = 0;
-        this.houseWasteCount = 0;
         dustbinHouseWaste.clear();
         dustbinPaper.clear();
         dustbinPlastic.clear();
@@ -84,11 +63,11 @@ public class Dustbin {
 
     @Override
     public String toString() {
-        String text = getColor() + " Dustbin! House waste content: " + houseWasteCount + "item()s ";
+        String text = getColor() + " Dustbin! House waste content: " + dustbinHouseWaste.size() + "item()s ";
         text = garbageNames(dustbinHouseWaste, text);
-        text += " Paper content: " + paperCount + "item()s ";
+        text += " Paper content: " + dustbinPaper.size() + "item()s ";
         text = garbageNames(dustbinPaper, text);
-        text += " Plastic content: " + plasticCount + "item()s ";
+        text += " Plastic content: " + dustbinPlastic.size() + "item()s ";
         text = garbageNames(dustbinPlastic, text);
         return text;
     }

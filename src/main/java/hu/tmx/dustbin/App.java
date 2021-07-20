@@ -23,7 +23,6 @@ public class App {
         } catch (DustbinContentException e) {
             System.out.println(e.getMessage());
             e.printStackTrace();
-
         }
         dustbin.displayContents();
         Garbage plasticGarbage2 = new PlasticGarbage("plastic2", false);

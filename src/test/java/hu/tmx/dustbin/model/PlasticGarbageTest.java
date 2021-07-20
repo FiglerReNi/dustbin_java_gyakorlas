@@ -7,28 +7,21 @@ import org.junit.Test;
 import static org.junit.Assert.*;
 
 public class PlasticGarbageTest {
-    PlasticGarbage plasticGarbage1;
-    PlasticGarbage plasticGarbage2;
+    PlasticGarbage plasticGarbage;
 
     @Before
     public void init(){
-        plasticGarbage1 = new PlasticGarbage("plastic1", false);
-        plasticGarbage2 = new PlasticGarbage("plastic2", true);
+        plasticGarbage = new PlasticGarbage("plastic", false);
     }
 
     @Test
-    public void clean(){
-        plasticGarbage1.clean();
-        assertTrue(plasticGarbage1.isCleand());
-        plasticGarbage1.clean();
-        assertTrue(plasticGarbage1.isCleand());
-        plasticGarbage2.clean();
-        assertTrue(plasticGarbage2.isCleand());
+    public void plasticIsCleanTrue(){
+        plasticGarbage.clean();
+        assertTrue(plasticGarbage.isCleand());
     }
 
     @After
     public void clear(){
-        plasticGarbage1 = null;
-        plasticGarbage2 = null;
+        plasticGarbage = null;
     }
 }

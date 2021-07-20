@@ -22,26 +22,32 @@ public class DustbinTest {
     }
 
     @Test
-    public void throwOutGarbage() throws DustbinContentException {
-            when(paperGarbage.isSqueezed()).thenReturn(true);
-            when(plasticGarbage.isCleand()).thenReturn(true);
-            dustbin.throwOutGarbage(paperGarbage);
-            dustbin.throwOutGarbage(plasticGarbage);
-            assertEquals(1, dustbin.getPaperCount());
-            assertEquals(1, dustbin.getDustbinPaper().size());
-            assertEquals(1, dustbin.getPlasticCount());
-            assertEquals(1, dustbin.getDustbinPlastic().size());
-            verify(paperGarbage, times(2)).isSqueezed();
-            verify(plasticGarbage, times(2)).isCleand();
+    public void squeezedPaperThrowOutSuccess() throws DustbinContentException {
+        when(paperGarbage.isSqueezed()).thenReturn(true);
+        dustbin.throwOutGarbage(paperGarbage);
+        assertEquals(1, dustbin.getDustbinPaper().size());
+        verify(paperGarbage, times(2)).isSqueezed();
+    }
+
+    @Test
+    public void cleanedPlasticThrowOutSuccess() throws DustbinContentException {
+        when(plasticGarbage.isCleand()).thenReturn(true);
+        dustbin.throwOutGarbage(plasticGarbage);
+        assertEquals(1, dustbin.getDustbinPlastic().size());
+        verify(plasticGarbage, times(2)).isCleand();
     }
 
     @Test(expected = DustbinContentException.class)
-    public void DustbinContentException() throws DustbinContentException {
+    public void notSqueezedPaperThrowExceptionDustbinContentException() throws DustbinContentException {
         when(paperGarbage.isSqueezed()).thenReturn(false);
-        when(plasticGarbage.isCleand()).thenReturn(false);
         dustbin.throwOutGarbage(paperGarbage);
-        dustbin.throwOutGarbage(plasticGarbage);
         verify(paperGarbage, times(2)).isSqueezed();
+    }
+
+    @Test(expected = DustbinContentException.class)
+    public void notCleanedPlasticThrowExceptionDustbinContentException() throws DustbinContentException {
+        when(plasticGarbage.isCleand()).thenReturn(false);
+        dustbin.throwOutGarbage(plasticGarbage);
         verify(plasticGarbage, times(2)).isCleand();
     }
 
@@ -50,7 +56,6 @@ public class DustbinTest {
         when(paperGarbage.isSqueezed()).thenReturn(true);
         dustbin.throwOutGarbage(paperGarbage);
         dustbin.emptyContents();
-        assertEquals(0, dustbin.getPaperCount());
         assertEquals(0, dustbin.getDustbinPaper().size());
     }
 
@@ -58,6 +63,5 @@ public class DustbinTest {
     public void destroyObject(){
         dustbin = null;
     }
-
 
 }
